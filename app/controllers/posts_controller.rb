@@ -21,7 +21,8 @@ class PostsController < AuthenticatedController
   end
 
   def publish_post
-    sleep(10)
+    flash[:notice] = 'Post został opublikowany'
+    redirect_to root_path
   end
 
   private

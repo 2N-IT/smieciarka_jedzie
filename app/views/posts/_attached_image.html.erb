@@ -1,8 +1,8 @@
 <%= image_tag post.image, class: "h-auto max-w-full max-h-96 mx-auto" %>
 
-<%= form_for post, url: publish_post_posts_path, data: { create_post_target: 'form' } do |f| %>
+<%= form_for post, url: publish_post_posts_path, method: :post, data: { create_post_target: 'form' } do |f| %>
   <%= f.hidden_field :id, value: post.id %>
-  <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+  <div class="grid gap-4 sm:gap-6">
     <div class="mt-4">
       <%= render Forms::LabelComponent.new(form: f, method: :body) %>
       <%= render Forms::TextareaComponent.new(form: f, method: :body) %>
@@ -10,10 +10,21 @@
     </div>
 
     <div class="mt-4">
-      <%= render Forms::LabelComponent.new(form: f, method: :body) %>
-      <%= render Forms::TextareaComponent.new(form: f, method: :body) %>
-      <%= render Forms::ErrorsComponent.new(resource: post, method: :body) %>
+      <%= f.fields_for :tags do |tags| %>
+        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+          <div class="inline-flex">
+            <%= tags.check_box tag.id, class: 'hidden peer' %>
+            <%= tags.label tag.id, tag.name, class: 'inline-flex items-center px-3 py-1.5 mt-4 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full cursor-pointer border-2 peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:text-white' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <%= f.submit class: 'hidden inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800' %>
+
+  <hr class="h-px my-8 bg-gray-200 border-0 ">
+
+  <div class="mt-4 flex items-center justify-between">
+    <%= f.submit 'Zapisz szkic', class: 'py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200' %>
+    <%= f.submit 'Opublikuj post na FB', class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2' %>
+  </div>
 <% end %>
