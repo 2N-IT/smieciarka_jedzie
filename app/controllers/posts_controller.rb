@@ -24,8 +24,8 @@ class PostsController < AuthenticatedController
     post = current_user.posts.find(params[:post][:id])
     params[:post][:tags].each do |id, value|
       next unless value == '1'
-      tag = ActsAsTaggableOn::Tag.find(id)
-      post.tag_list.add(tag.name)
+      tag = Tag.find(id)
+      post.tags << tag
     end
     flash[:notice] = 'Post został opublikowany'
     redirect_to post_post_published_path(params[:post][:id])

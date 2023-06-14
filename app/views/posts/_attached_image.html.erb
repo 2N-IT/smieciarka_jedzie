@@ -11,7 +11,7 @@
 
     <div class="mt-4">
       <%= f.fields_for :tags do |tags| %>
-        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+        <% Tag.all.each do |tag| %>
           <div class="inline-flex">
             <%= tags.check_box tag.id, class: 'hidden peer' %>
             <%= tags.label tag.id, tag.name, class: 'inline-flex items-center px-3 py-1.5 mt-4 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full cursor-pointer border-2 peer-checked:border-primary-700 peer-checked:bg-primary-700 peer-checked:text-white' %>
