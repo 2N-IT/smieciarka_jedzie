@@ -1,0 +1,17 @@
+
+
+
+<%= content_tag :section, id: dom_id(post), class: 'mx-auto max-w-screen-xl' do %>
+  <div class="py-8 px-4 max-w-2xl lg:py-16">
+    <%= form_with model: post do |f| %>
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <%= render Forms::LabelComponent.new(form: f, method: :image) %>
+          <%= render Forms::FileComponent.new(form: f, method: :image) %>
+          <%= render Forms::ErrorsComponent.new(resource: post, method: :image) %>
+        </div>
+      </div>
+      <%= f.submit class: 'hidden inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800' %>
+    <% end %>
+  </div>
+<% end %>
