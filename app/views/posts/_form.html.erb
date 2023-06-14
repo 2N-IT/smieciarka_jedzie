@@ -8,6 +8,7 @@
         <div class="sm:col-span-2">
           <%= render Forms::LabelComponent.new(form: f, method: :image) %>
           <%= render Forms::FileComponent.new(form: f, method: :image) %>
+          <p class="mt-1 text-sm text-gray-500">PNG, JPG</p>
           <%= render Forms::ErrorsComponent.new(resource: post, method: :image) %>
         </div>
       </div>
