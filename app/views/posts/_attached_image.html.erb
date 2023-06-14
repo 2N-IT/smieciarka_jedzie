@@ -1,0 +1,14 @@
+<%= image_tag post.image, class: "h-auto max-w-full max-h-96 mx-auto" %>
+
+<%= form_for post, url: publish_post_posts_path, data: { create_post_target: 'form' } do |f| %>
+  <%= f.hidden_field :id, value: post.id %>
+  <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+    <div class="sm:col-span-2">
+      <%= render Forms::LabelComponent.new(form: f, method: :body) %>
+      <%= render Forms::FileComponent.new(form: f, method: :image) %>
+      <p class="mt-1 text-sm text-gray-500">PNG, JPG</p>
+      <%= render Forms::ErrorsComponent.new(resource: post, method: :image) %>
+    </div>
+  </div>
+  <%= f.submit class: 'hidden inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800' %>
+<% end %>
