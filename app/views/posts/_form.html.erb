@@ -9,6 +9,14 @@
           <%= render Forms::ErrorsComponent.new(resource: post, method: :image) %>
         </div>
       </div>
+      <div>
+        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+          <label class="inline-flex items-center px-3 py-1.5 mt-4 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full cursor-pointer">
+            <%= check_box_tag 'post[tag_ids][]', tag.id, post.tag_ids.include?(tag.id), id: "post_tag_ids_#{tag.id}" %>
+            <span class="ml-2"><%= tag.name %></span>
+          </label>
+        <% end %>
+      </div>
       <%= f.submit class: 'hidden inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800' %>
     <% end %>
   </div>
