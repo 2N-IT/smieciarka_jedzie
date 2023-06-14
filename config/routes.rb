@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    resources :searches do
-      resources :products, only: %i[index]
-      post :product_fetch, to: 'searches/product_fetch#create'
-    end
+    root 'static#dashboard', as: :authenticated_root
+    resources :posts
   end
 
   root 'static#home'
