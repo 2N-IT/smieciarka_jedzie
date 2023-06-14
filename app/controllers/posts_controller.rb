@@ -9,7 +9,11 @@ class PostsController < AuthenticatedController
     render 'posts/new', locals: { post: post }
   end
 
-  def create
+  def attach_image
+    sleep(10)
+  end
 
+  def publish_post
+    sleep(10)
   end
 end
