@@ -1,0 +1,3 @@
+<!--turbo stream update new_post with partial attached_image-->
+
+<%= turbo_stream.replace "new_post", partial: "posts/attached_image", locals: { post: post } %>
