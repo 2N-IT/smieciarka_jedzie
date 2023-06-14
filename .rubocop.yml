@@ -1,0 +1,47 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "app/assets/**/*"
+    - "tmp/**/*"
+    - "bin/**/*"
+    - "log/**/*"
+    - "db/*"
+    - "public/**/*"
+    - "vendor/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/environments/development.rb"
+
+Layout/LineLength:
+  Exclude:
+    - "config/initializers/devise.rb"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/components/**/*"
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
