@@ -27,7 +27,7 @@
             </div>
             <ul class="py-1" role="none">
               <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
+                <a href="<%= authenticated_root_path %>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
               </li>
               <li>
                 <%= link_to 'Wyloguj sie', destroy_user_session_path, data: { 'turbo-method': :delete }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
@@ -52,17 +52,17 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '#', class: 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100' do %>
+        <%= link_to posts_path, class: 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100' do %>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900">
             <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
           </svg>
-          <span class="flex-1 ml-3 whitespace-nowrap">#</span>
+          <span class="flex-1 ml-3 whitespace-nowrap">Posty</span>
         <% end %>
       </li>
     </ul>
   </div>
 </aside>
-<div class="sm:ml-64 mt-14 h-full">
+<div class="sm:ml-64 mt-16 sm:mt-14 h-full">
   <%= content %>
 </div>

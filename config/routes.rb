@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root 'static#dashboard', as: :authenticated_root
+    resources :posts
   end
 
   root 'static#home'
