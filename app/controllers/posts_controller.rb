@@ -11,6 +11,7 @@ class PostsController < AuthenticatedController
   end
 
   def attach_image
+    # TODO: connect with api
     post = current_user.posts.create!(body: "Cześć wszystkim! 🎉 Mam do oddania za darmo parę butów narciarskich [rozmiar]. Są to buty do narciarstwa zjazdowego, idealne dla miłośników sportów zimowych. Jeśli ktoś jest zainteresowany, proszę dajcie znać. Uwaga: oddaję tylko osobie, która naprawdę tego potrzebuje. 🎿🏔️")
     post.image.attach(params[:post][:image])
     respond_to do |format|
