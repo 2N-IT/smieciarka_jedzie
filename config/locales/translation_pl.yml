@@ -46,7 +46,7 @@ pl:
         variation_digest: Podsumowanie odmiany  #g
 
       post:
-        body: Ciało  #g
+        body: Opis  #g
         image_attachment: :activerecord.models.image_attachment  #g
         image_blob: :activerecord.models.image_blob  #g
         user: :activerecord.models.user  #g
