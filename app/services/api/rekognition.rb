@@ -1,5 +1,4 @@
 class Api::Rekognition
-  # i have image in /app/assets/images/ski_boots.png
   def initialize(image:)
     @image = image
   end
