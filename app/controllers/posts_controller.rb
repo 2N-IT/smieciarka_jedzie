@@ -22,7 +22,12 @@ class PostsController < AuthenticatedController
 
   def publish_post
     flash[:notice] = 'Post został opublikowany'
-    redirect_to root_path
+    redirect_to post_post_published_path(params[:post][:id])
+  end
+
+  def post_published
+    post = Post.find(params[:post_id])
+    render 'posts/post_published', locals: { post: post }
   end
 
   private
