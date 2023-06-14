@@ -1,4 +1,5 @@
-class StaticController < ApplicationController
-  def home
-  end
+# frozen_string_literal: true
+
+class StaticController < AuthenticatedController
+  def home; end
 end

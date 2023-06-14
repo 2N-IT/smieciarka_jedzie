@@ -1,0 +1,15 @@
+pl:
+  activerecord:
+    models:
+      user:
+        few: Użytkowników  #g
+        one: Użytkownik  #g
+        other: Użytkowników  #g
+
+    attributes:
+      user:
+        email: Adres e-mail  #g
+        encrypted_password: Zaszyfrowane hasło  #g
+        remember_created_at: Data utworzenia zapamiętania logowania  #g
+        reset_password_sent_at: Data wysłania żądania resetu hasła  #g
+        reset_password_token: Token umożliwiający reset hasła  #g

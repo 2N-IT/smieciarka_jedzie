@@ -1,7 +1,14 @@
-Rails.application.routes.draw do
-  root "static#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  devise_for :users
+
+  authenticated :user do
+    resources :searches do
+      resources :products, only: %i[index]
+      post :product_fetch, to: 'searches/product_fetch#create'
+    end
+  end
+
+  root 'static#home'
 end

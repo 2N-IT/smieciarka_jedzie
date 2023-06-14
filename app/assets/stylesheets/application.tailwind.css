@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer utilities {
+    .field_with_errors > label {
+        @apply text-red-700;
+    }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+    .field_with_errors > input {
+        @apply bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500;
+    }
 }
-
-*/
