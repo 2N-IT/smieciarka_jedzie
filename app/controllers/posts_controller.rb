@@ -21,7 +21,7 @@ class PostsController < AuthenticatedController
 
   def publish_post
     post = current_user.posts.find(params[:post][:id])
-    params[:post][:tags].each do |id, value|
+    params[:post][:tags]&.each do |id, value|
       next unless value == '1'
       tag = Tag.find(id)
       post.tags << tag
