@@ -11,9 +11,11 @@ class PostsController < AuthenticatedController
   end
 
   def attach_image
-    sleep 10
-    # TODO: connect with api
-    post = current_user.posts.create!(body: "Cześć wszystkim! 🎉 Mam do oddania za darmo parę butów narciarskich [rozmiar]. Są to buty do narciarstwa zjazdowego, idealne dla miłośników sportów zimowych. Jeśli ktoś jest zainteresowany, proszę dajcie znać. Uwaga: oddaję tylko osobie, która naprawdę tego potrzebuje. 🎿🏔️")
+    image = File.open(params[:post][:image].tempfile, 'rb') { |file| file.read }
+    tags = Api::Rekognition.new(image: image).call
+    chat_response = Api::ChatGpt.new(message: tags.join(', ')).call
+    body = chat_response['choices'].first['message']['content']
+    post = current_user.posts.create!(body: body)
     post.image.attach(params[:post][:image])
     respond_to do |format|
       format.turbo_stream do
