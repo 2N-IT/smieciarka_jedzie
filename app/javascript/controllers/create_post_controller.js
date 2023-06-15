@@ -7,8 +7,8 @@ export default class extends Controller {
     connect() {
         // on submit console log sth
         this.formTarget.addEventListener("submit", (event) => {
-            console.log("submitting form")
-            // LOADING SPINNER
+            document.getElementById('post_image_input_container').classList.add('hidden')
+            document.getElementById('form_skeleton').classList.remove('hidden')
         })
     }
 }
