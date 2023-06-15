@@ -11,12 +11,7 @@ class PostsController < AuthenticatedController
   end
 
   def attach_image
-    image = File.open(params[:post][:image].tempfile, 'rb') { |file| file.read }
-    tags = Api::Rekognition.new(image: image).call
-    chat_response = Api::ChatGpt.new(message: tags.join(', ')).call
-    body = chat_response['choices'].first['message']['content']
-    post = current_user.posts.create!(body: body)
-    post.image.attach(params[:post][:image])
+    post = Posts::AttachImage.new(params: params, current_user: current_user).call
     respond_to do |format|
       format.turbo_stream do
         render 'posts/attach_image', locals: { post: post }
