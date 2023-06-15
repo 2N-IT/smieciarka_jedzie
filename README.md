@@ -1,5 +1,7 @@
 # Śmieciarka jedzie
 
+[Youtube demo](https://youtu.be/_hleYrBu7HU)
+
 Project making during hackathon: [hackaton website](https://hacktotherescue.org/)
 
 We chosen the challenge: [AI for Climate Consciousness](https://hacktotherescue.org/challenges/#rec602626460)
