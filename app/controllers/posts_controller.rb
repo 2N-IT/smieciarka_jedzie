@@ -11,7 +11,7 @@ class PostsController < AuthenticatedController
   end
 
   def attach_image
-    post = Post.last
+    post = Posts::AttachImage.new(params: params, current_user: current_user).call
     respond_to do |format|
       format.turbo_stream do
         render 'posts/attach_image', locals: { post: post }
